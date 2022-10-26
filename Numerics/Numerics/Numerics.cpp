@@ -7,6 +7,7 @@ using namespace std;
 //#define DEC_2_BIN
 //#define SDVIG
 //#define DEC_2_HEX
+
 int main()
 {
     setlocale(LC_ALL, "rus");
@@ -87,6 +88,35 @@ int main()
     }
     cout << endl;
 #endif
-
+    const int n = 8;// для хранения 16-тириченого числа (2 разрядное число занимает 1 байт (у нас 16 символов(16/2)), в инте 4 байта 2*4=8)
+    char hex[n] = {};
+    int decimal;
+    int i = 0;
+    cout << "Введите десятичное число: "; cin >> decimal; cout << endl;
+    for (; decimal; decimal/=16, i++)
+    {
+        hex[i] = decimal % 16;
+        //decimal /= 16 - в цикле тоже самое, сокращает визуально запись кода 
+        hex[i] += hex[i] < 10 ? 48 : 55;
+        cout << hex[i];
+    }
+    for (i--/*int i=n-1*/; i >= 0; i--)
+    {
+       /* switch (hex[i])
+        {
+        case 10: cout << "A"; break;
+        case 11: cout << "B"; break;
+        case 12: cout << "C"; break;
+        case 13: cout << "D"; break;
+        case 14: cout << "E"; break;
+        case 15: cout << "F"; break;
+        default:cout << hex[i];
+        }*/
+       // if (hex[i] < 10)cout << hex[i]; else cout << char(hex[i] + 55/*код аски буквы + остаток от деления = +55*/);
+       // cout << char (hex[i] < 10 ?  hex[i]+48 :   hex[i] + 55);
+       // cout << char(hex[i] + (hex[i] < 10 ? 48 : 55));
+      
+    }
+    cout << endl;
 }
 
